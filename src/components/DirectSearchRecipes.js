@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { API_KEY, BASE_URL } from '../apiConfig';
+import './DirectSearchRecipes.css'; // Import the CSS file
+import FoodImage from './Food-image_1.jpg';
+
 
 const DirectSearchRecipes = () => {
   const [query, setQuery] = useState('');
@@ -28,54 +31,57 @@ const DirectSearchRecipes = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Search Recipes</h1>
-      <div style={{ marginBottom: '10px' }}>
-        <input
-          type="text"
-          placeholder="Enter a keyword (e.g., chicken)"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{ padding: '10px', width: '300px' }}
+    <div>
+      {/* Main Content */}
+      <div className="recipe-search-container">
+        <img
+          src={FoodImage}
+          alt="Food background"
+          className="recipe-search-image"
         />
-        <button onClick={searchRecipes} style={{ padding: '10px', marginLeft: '10px' }}>
-          Search
-        </button>
+        <div className="recipe-search-overlay">
+          <input
+            type="text"
+            placeholder="Search recipes (e.g., chicken)"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="recipe-search-input"
+          />
+          <button onClick={searchRecipes} className="recipe-search-button">
+            Search
+          </button>
+        </div>
       </div>
 
-      {loading ? (
-        <p>Loading recipes...</p>
-      ) : (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-          {recipes.map((recipe, index) => (
-            <div
-              key={index}
-              style={{
-                border: '1px solid #ccc',
-                padding: '10px',
-                borderRadius: '5px',
-                maxWidth: '300px',
-              }}
-            >
-              <h3>{recipe.title}</h3>
-              {recipe.image && (
-                <img
-                  src={recipe.image}
-                  alt={recipe.title}
-                  style={{ width: '100%' }}
-                />
-              )}
-              <a
-                href={`https://spoonacular.com/recipes/${recipe.title}-${recipe.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Recipe
-              </a>
-            </div>
-          ))}
-        </div>
-      )}
+      {/* Recipes Section */}
+      <div className="recipe-list">
+        {loading ? (
+          <p>Loading recipes...</p>
+        ) : (
+          <div className="recipe-cards">
+            {recipes.map((recipe, index) => (
+              <div key={index} className="recipe-card">
+                <h3>{recipe.title}</h3>
+                {recipe.image && (
+                  <img
+                    src={recipe.image}
+                    alt={recipe.title}
+                    className="recipe-image"
+                  />
+                )}
+                <a
+                  href={`https://spoonacular.com/recipes/${recipe.title}-${recipe.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="recipe-link"
+                >
+                  View Recipe
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

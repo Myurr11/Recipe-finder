@@ -1,22 +1,41 @@
 import React, { useState } from 'react';
 import DirectSearchRecipes from './components/DirectSearchRecipes';
 import IngredientSearchRecipes from './components/IngredientSearchRecipes';
+import './App.css'; // Import the CSS file
 
 function App() {
-  const [page, setPage] = useState('direct'); // 'direct' or 'ingredient'
+  const [page, setPage] = useState('home'); // 'home' (DirectSearchRecipes) or 'ingredients' (IngredientSearchRecipes)
+
+  const renderPage = () => {
+    switch (page) {
+      case 'home':
+        return <DirectSearchRecipes />;
+      case 'ingredients':
+        return <IngredientSearchRecipes />;
+      default:
+        return <DirectSearchRecipes />;
+    }
+  };
 
   return (
-    <div className="App">
-      <header style={{ padding: '20px', borderBottom: '1px solid #ccc' }}>
-        <button onClick={() => setPage('direct')} style={{ marginRight: '10px' }}>
-          Direct Search
-        </button>
-        <button onClick={() => setPage('ingredient')}>Ingredient Search</button>
-      </header>
+    <div>
+      {/* Navbar */}
+      <nav className="navbar">
+        <div className="navbar-logo" onClick={() => setPage('home')}>
+          My Recipes
+        </div>
+        <div className="navbar-buttons">
+          <button className="navbar-button" onClick={() => setPage('home')}>
+            Recipe Search
+          </button>
+          <button className="navbar-button" onClick={() => setPage('ingredients')}>
+            Search by Ingredients
+          </button>
+        </div>
+      </nav>
 
-      <main style={{ padding: '20px' }}>
-        {page === 'direct' ? <DirectSearchRecipes /> : <IngredientSearchRecipes />}
-      </main>
+      {/* Page Content */}
+      <main className="main-content">{renderPage()}</main>
     </div>
   );
 }
