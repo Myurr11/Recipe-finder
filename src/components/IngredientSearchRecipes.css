@@ -1,91 +1,151 @@
 /* Ingredient Search Container */
 .ingredient-search-container {
-    position: relative;
-    text-align: center;
-    color: white;
-    background-color: black; /* Set background color of the page to black */
-    width: 100%;
-    height: 80vh; /* Adjust height to 70% of viewport */
-    margin: 0; /* Remove any margins */
-    padding: 0; /* Remove any padding */
-    border-radius: 50px;
-  }
-  
-  .ingredient-search-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0px 0px 50px 50px;
-  }
-  
-  
-  .ingredient-search-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .ingredient-search-input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .ingredient-search-button {
-    padding: 10px;
-    margin-left: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Recipe List */
-  .ingredient-recipe-list {
-    display: flex;
-    justify-content: center; /* Center-align all cards horizontally */
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    background-color: white; /* Set background of the section with the recipe cards to white */
-    width: 100%;
-    margin-top: 10px; /* Optional: Adjust if you need to bring the section closer */
-  }
-  
-  /* Ingredient Recipe Cards */
-  .ingredient-recipe-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center; /* Center-align all cards */
-  }
-  
-  /* Ingredient Recipe Card */
-  .ingredient-recipe-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center-align content inside each card */
-    align-items: center;     /* Center-align content horizontally */
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 300px;
-    text-align: center; /* Ensure text alignment is centered */
-  }
-  
-  /* Ingredient Recipe Image */
-  .ingredient-recipe-image {
-    width: 90%;
-    border-radius: 10px;
-  }
-  
-  /* Ingredient Recipe Link */
-  .ingredient-recipe-link {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-  }
-  
+  position: relative;
+  text-align: center;
+  color: white;
+  background-color: black; /* Set background color of the page to black */
+  width: 100%;
+  height: 90vh; /* Adjust height to 90% of viewport */
+  margin: 0; /* Remove any margins */
+  padding: 0; /* Remove any padding */
+  border-radius: 50px;
+}
+
+.ingredient-search-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0px 0px 50px 50px;
+}
+
+.ingredient-search-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ingredient-search-input {
+  padding: 10px;  
+  height: 30px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.ingredient-search-button {
+  width: 100px;
+  height: 52px;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #6c4f32;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Ingredient Recipe List */
+.ingredient-recipe-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background for list */
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Ingredient Recipe Cards Section */
+.ingredient-recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Individual Ingredient Recipe Card */
+.ingredient-recipe-card {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* Off-white background to simulate paper */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Georgia', serif;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ddd; /* Light border for page-like effect */
+  background: linear-gradient(135deg, #f1f1f1 25%, #fff 25%) top left, 
+              linear-gradient(225deg, #f1f1f1 25%, #fff 25%) top left;
+  background-size: 8px 8px; /* Creates the paper-like lines */
+  min-height: 450px; /* Ensure all cards are the same height */
+  justify-content: space-between; /* Space out elements evenly */
+}
+
+/* Ingredient Recipe Image */
+.ingredient-recipe-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  height: 180px;
+  width: 100%;
+}
+
+/* Ingredient Recipe Title */
+.ingredient-recipe-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 13px;
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 1px dashed #6c4f32; /* Simulate a dashed line like diary pages */
+  padding-bottom: 12px;
+  height: 50px; /* Fixed height for titles */
+  overflow: hidden; /* Prevent long titles from overflowing */
+  display: flex;
+  align-items: center; /* Vertically center title content */
+}
+
+/* Ingredient Recipe Description */
+.ingredient-recipe-description {
+  font-size: 1rem;
+  color: #495057; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 90px; /* Fixed height for descriptions */
+  margin-bottom: 10px;
+  display: -webkit-box; /* Ensures ellipsis for multi-line content */
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+/* Ingredient Recipe Tags (Dietary Labels) */
+.ingredient-recipe-tags {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* View Recipe Button */
+.view-ingredient-recipe-button {
+  padding: 12px 25px;
+  background-color: #6c4f32;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  align-self: center; /* Center button horizontally */
+}
+
+.view-ingredient-recipe-button:hover {
+  background-color: #45321f;
+  transform: translateY(-2px);
+}

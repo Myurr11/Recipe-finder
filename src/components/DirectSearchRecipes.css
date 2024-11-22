@@ -26,19 +26,22 @@
 }
 
 .recipe-search-input {
-    padding: 10px;
+    padding: 10px;  
+    height: 30px;
     width: 300px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .recipe-search-button {
+    width: 100px;
+    height: 52px;
     padding: 10px;
     margin-left: 10px;
-    background-color: #28a745;
+    background-color: #6c4f32;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
@@ -66,19 +69,21 @@
 .recipe-card {
     width: 100%;
     max-width: 320px;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background-color: #fef2e5;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Georgia', serif;
+    background-color: #fff; /* Off-white background to simulate paper */
     padding: 20px;
     display: flex;
     flex-direction: column;
-}
-
-.recipe-card:hover {
-    transform: translateY(-5px); /* Lift the card on hover */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    font-family: 'Georgia', serif;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd; /* Light border for page-like effect */
+    background: linear-gradient(135deg, #f1f1f1 25%, #fff 25%) top left, 
+                linear-gradient(225deg, #f1f1f1 25%, #fff 25%) top left;
+    background-size: 8px 8px; /* Creates the paper-like lines */
+    min-height: 450px; /* Ensure all cards are the same height */
+    justify-content: space-between; /* Space out elements evenly */
 }
 
 /* Recipe Image Container */
@@ -90,46 +95,32 @@
     width: 100%;
 }
 
-.recipe-thumbnail {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px; /* Rounded corners for image */
-    transition: all 0.3s ease;
-}
-
-.recipe-thumbnail:hover {
-    transform: scale(1.05); /* Zoom effect on hover */
-}
-
-/* Recipe Info Section (Title, Description, and Button) */
-.recipe-info {
-    text-align: left;
-}
-
 /* Recipe Title */
 .recipe-title {
     font-size: 1.6rem;
     font-weight: 600;
     color: #343a40;
-    margin-bottom: 12px;
-    font-family: 'Roboto', sans-serif; /* Modern, clean font */
-}
-
-/* Recipe Prep Time and Servings */
-.recipe-prep-time,
-.recipe-servings {
-    font-size: 0.95rem;
-    color: #6c757d;
-    margin: 5px 0;
+    margin-bottom: 13px;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 1px dashed #6c4f32; /* Simulate a dashed line like diary pages */
+    padding-bottom: 12px;
+    height: 50px; /* Fixed height for titles */
+    overflow: hidden; /* Prevent long titles from overflowing */
+    display: flex;
+    align-items: center; /* Vertically center title content */
 }
 
 /* Recipe Description */
 .recipe-description {
     font-size: 1rem;
-    color: #495057;
+    color: #495057; 
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 90px; /* Fixed height for descriptions */
+    margin-bottom: 10px;
+    display: -webkit-box; /* Ensures ellipsis for multi-line content */
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
 }
 
 /* Recipe Tags (Dietary Labels) */
@@ -140,19 +131,10 @@
     flex-wrap: wrap;
 }
 
-.diet-tag {
-    background-color: #e9ecef;
-    color: #495057;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    text-transform: capitalize;
-}
-
 /* View Recipe Button */
 .view-recipe-button {
     padding: 12px 25px;
-    background-color: #007bff;
+    background-color: #6c4f32;
     color: white;
     border: none;
     border-radius: 25px;
@@ -160,16 +142,10 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    align-self: center; /* Center button horizontally */
 }
 
 .view-recipe-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-/* Recipe Link */
-.recipe-link {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: 600;
+    background-color: #45321f;
+    transform: translateY(-2px);
 }
