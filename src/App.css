@@ -4,19 +4,30 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ccc;
+  color: rgb(255, 183, 0);
+  background-color: rgba(248, 248, 248, 0); /* Semi-transparent background */
+  backdrop-filter: blur(3px); /* Apply blur effect */
+  border-bottom: 1px solid rgba(204, 204, 204, 0.061); /* Light border with transparency */
+  position: fixed; /* Fix navbar to the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 10; /* Ensure navbar stays above other content */
+  box-sizing: border-box; /* Ensures padding doesn't overflow */
 }
 
 .navbar-logo {
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
+  white-space: nowrap; /* Prevent logo from breaking */
 }
 
 .navbar-buttons {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
 
 .navbar-button {
@@ -27,9 +38,17 @@
   border: none;
   border-radius: 5px;
   font-size: 16px;
+  white-space: nowrap; /* Prevent text from breaking */
 }
 
 .navbar-button:hover {  
   background-color: #0056b3;
 }
 
+  /* Main Content */
+  .main-content {
+    width: 100%;
+    max-width: 100vw; /* Ensure content doesn't overflow */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+  }
