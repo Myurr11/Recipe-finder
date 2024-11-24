@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DirectSearchRecipes from './components/DirectSearchRecipes';
 import IngredientSearchRecipes from './components/IngredientSearchRecipes';
 import './App.css'; // Import the CSS file
+import logo from './logo.png';
 
 function App() {
   const [page, setPage] = useState('home'); // 'home' (DirectSearchRecipes) or 'ingredients' (IngredientSearchRecipes)
@@ -22,7 +23,7 @@ function App() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-logo" onClick={() => setPage('home')}>
-          My Recipes
+        <img src={logo} alt="Logo" />
         </div>
         <div className="navbar-buttons">
           <button className="navbar-button" onClick={() => setPage('home')}>

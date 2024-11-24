@@ -1,3 +1,9 @@
+/* Theme-Specific Styles */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
 /* Ingredient Search Container */
 .ingredient-search-container {
   position: relative;
@@ -31,6 +37,9 @@
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 20px;
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .ingredient-search-button {
@@ -43,6 +52,22 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.ingredient-search-button:hover {
+  background-color: #45321f;
+  transform: translateY(-4px);
+}
+
+/* Filters */
+.filter-dropdown {
+  margin-left: 10px;
+  padding: 10px;
+  height: 52px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
 }
 
 /* Ingredient Recipe List */
@@ -52,9 +77,15 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
-  background-color: #f8f9fa; /* Light background for list */
-  width: 100%;
+  background-color: #6c4f32; /* Light background for list */
+  width: 98%;
   margin-top: 20px;
+  border-radius: 50px 50px 0px 0px;
+  display: none; /* Hide initially */
+}
+
+.ingredient-recipe-list.visible {
+  display: block; /* Show when recipes are available */
 }
 
 /* Ingredient Recipe Cards Section */
@@ -113,22 +144,43 @@
 /* Ingredient Recipe Description */
 .ingredient-recipe-description {
   font-size: 1rem;
-  color: #495057; 
+  color: #495057;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 90px; /* Fixed height for descriptions */
+  height: 100px; /* Fixed height for descriptions */
   margin-bottom: 10px;
   display: -webkit-box; /* Ensures ellipsis for multi-line content */
   -webkit-line-clamp: 3; /* Limit to 3 lines */
   -webkit-box-orient: vertical;
 }
 
-/* Ingredient Recipe Tags (Dietary Labels) */
-.ingredient-recipe-tags {
-  margin-top: 10px;
+/* Loading Skeleton */
+.loading-skeleton {
   display: flex;
-  gap: 10px;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 20px;
+}
+
+.skeleton-card {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 10px;
+  height: 450px;
+  background-color: #e0e0e0;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+      background-color: #e0e0e0;
+  }
+  50% {
+      background-color: #f0f0f0;
+  }
+  100% {
+      background-color: #e0e0e0;
+  }
 }
 
 /* View Recipe Button */
@@ -146,6 +198,30 @@
 }
 
 .view-ingredient-recipe-button:hover {
+  background-color: #45321f;
+  transform: translateY(-2px);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination-button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #6c4f32;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination-button:hover {
   background-color: #45321f;
   transform: translateY(-2px);
 }
