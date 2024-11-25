@@ -12,7 +12,7 @@ const DirectSearchRecipes = () => {
   const [filters, setFilters] = useState({ diet: '', cuisine: '', type: '' });
   const [page, setPage] = useState(1);
   const [darkMode, setDarkMode] = useState(false);
-  
+
   // Fuzzy Search Function
   const fuzzySearchRecipes = (query, recipes) => {
     const fuse = new Fuse(recipes, {
@@ -57,10 +57,12 @@ const DirectSearchRecipes = () => {
     const parsedQuery = parseSearchQuery(query);
 
     try {
+      // First API call with titleMatch to get exact matches
       const response = await axios.get(`${BASE_URL}/complexSearch`, {
         params: {
           apiKey: API_KEY,
           query: parsedQuery.query,
+          titleMatch: query,  // Exact title match
           number: 12,
           offset: (page - 1) * 12,
           diet: filters.diet,
@@ -71,8 +73,19 @@ const DirectSearchRecipes = () => {
       });
 
       let searchResults = response.data.results;
-      if (parsedQuery.type === 'recipe') {
-        searchResults = fuzzySearchRecipes(parsedQuery.query, searchResults);
+
+      if (searchResults.length === 0 && parsedQuery.type === 'recipe') {
+        // If no exact matches found, fallback to fuzzy search
+        const fallbackResponse = await axios.get(`${BASE_URL}/complexSearch`, {
+          params: {
+            apiKey: API_KEY,
+            query: parsedQuery.query,
+            number: 12,
+            addRecipeInformation: true,
+          },
+        });
+
+        searchResults = fuzzySearchRecipes(parsedQuery.query, fallbackResponse.data.results || []);
       }
 
       setRecipes(searchResults);
